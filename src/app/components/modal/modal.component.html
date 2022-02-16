@@ -1,0 +1,9 @@
+<div [ngClass]="{'hidden': hide }"
+  class="bg-gray-800/80 w-full h-full flex flex-col justify-center items-center absolute left-0 top-0">
+  <div class="border-2 flex flex-col justify-center items-center border-blue-400 px-2 py-4 bg-white rounded w-5/12">
+    <ng-content select="[header]"></ng-content>
+    <div class="w-9/12">
+      <ng-content select="[body]"></ng-content>
+    </div>
+  </div>
+</div>

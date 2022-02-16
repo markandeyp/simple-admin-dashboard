@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "Markandey",
+    "email": "markandeypathak@live.com",
+    "role": "Senior Associate"
+  },
+  {
+    "id": 2,
+    "name": "John Doe",
+    "email": "john.doe@example.com",
+    "role": "Associate"
+  },
+  {
+    "id": 3,
+    "name": "Jane Doe",
+    "email": "jane.doe@example.com",
+    "role": "Trainee Associate"
+  },
+  {
+    "id": 4,
+    "name": "Mark Watt",
+    "email": "mark.watt@example.com",
+    "role": "Director"
+  },
+  {
+    "id": 5,
+    "name": "Robert Whale",
+    "email": "robert.whale@example.com",
+    "role": "CEO"
+  },
+  {
+    "id": 6,
+    "name": "David Lloyd",
+    "email": "david.lloyd@example.com",
+    "role": "Associate"
+  }
+]

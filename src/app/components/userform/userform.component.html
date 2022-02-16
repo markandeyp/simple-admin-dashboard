@@ -1,0 +1,27 @@
+<form>
+  <label>
+    <span class="text-gray-700">Full name</span>
+    <input type="text" #name class="mt-1 block w-full" placeholder="Enter full name"
+      [value]="user.name ? user.name : ''" />
+  </label>
+  <label>
+    <span class="text-gray-700">Email</span>
+    <input type="text" #email class="mt-1 block w-full" placeholder="Enter email"
+      [value]="user.email ? user.email: ''" />
+  </label>
+  <label>
+    <span class="text-gray-700">Role</span>
+    <select class="mt-1 block w-full" #role [value]="user.role ? user.role : 'Trainee Associate'">
+      <option value="Trainee Associate">Trainee Associate</option>
+      <option value="Associate">Associate</option>
+      <option value="Senior Associate">Senior Associate</option>
+      <option value="Director">Director</option>
+      <option value="CEO">CEO</option>
+    </select>
+  </label>
+  <div class="flex mt-2 justify-between">
+    <button type="button" class="text-gray-700 font-bold hover:text-black" (click)="cancel()">Cancel</button>
+    <button type="button" class="text-white px-5 font-bold py-2 rounded bg-blue-500 hover:bg-blue-700"
+      (click)="save()">Save</button>
+  </div>
+</form>
