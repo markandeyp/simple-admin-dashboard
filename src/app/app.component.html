@@ -1,17 +1,6 @@
 <app-header></app-header>
-<main class="p-5 w-9/12 mx-auto">
-  <button type="button" class="text-white px-5 font-bold py-2 rounded bg-blue-500 hover:bg-blue-700"
-    (click)="openUserModal(null)">Add</button>
-  <app-datatable [columns]="columns" (onRowClick)="openUserModal($event)" [data]="data"></app-datatable>
+<main class="flex pt-20">
+  <div class="container p-5 mx-auto">
+    <router-outlet></router-outlet>
+  </div>
 </main>
-
-<app-modal>
-  <ng-container header>
-    <div class="p-2 font-bold text-xl">
-      {{edit? "Edit User" : "Add User"}}
-    </div>
-  </ng-container>
-  <ng-container body>
-    <app-userform [user]="user" (onCancel)="cancel()" (onSave)="save($event)"></app-userform>
-  </ng-container>
-</app-modal>

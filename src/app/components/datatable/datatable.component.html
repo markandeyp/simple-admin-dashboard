@@ -1,16 +1,38 @@
-<table class="w-full">
-  <thead class="font-bold">
-    <tr class="border-b-2 border-b-black">
-      <th class="p-3" *ngFor="let col of columns">
-        {{col.header}}
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let row of data;index as i;" (click)="rowClick(row)" class="odd:bg-blue-100">
-      <td class="p-3" *ngFor="let col of columns">
-        {{row[col.field]}}
-      </td>
-    </tr>
-  </tbody>
-</table>
+<div class="shadow-lg bg-white">
+  <table class="w-full border border-gray-100">
+    <thead>
+      <tr>
+        <th class="p-4 text-left border" *ngFor="let col of columns">
+          {{col.header}}
+        </th>
+        <th class="p-3 text-left border" *ngIf="actions.length">
+          Actions
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of data;index as i;" class="odd:bg-gray-50 hover:bg-gray-100">
+        <td class="border p-4" *ngFor="let col of columns">
+          {{row[col.field]}}
+        </td>
+        <td class="border p-4 text-center" *ngIf="actions.length">
+          <button type="button" class="text-black-500 h-6 w-6 mx-2 hover:text-red-500 bg-transparent"
+            *ngFor="let action of actions" [title]="action.name" [innerHTML]="sanitizeIcon(action.icon)"
+            (click)="handleAction(action.name, row)">
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="p-5" *ngIf="pagination && data.length">
+    <div class="shadow-md w-fit mx-auto h-fit bg-white">
+      <button class="h-10 w-10 border border-gray-50 text-black-500 hover:text-red-500 shadow-sm"
+        (click)="handlePageChange(1)">&lt;</button>
+      <button class="h-10 w-10 border border-gray-50 text-black-500 hover:text-red-500 shadow-sm"
+        *ngFor="let page of range(pageCount)" [ngClass]="{'border-red-500': currentPage === page}"
+        (click)="handlePageChange(page)">{{page}}</button>
+      <button class="h-10 w-10 border border-gray-50 text-black-500 hover:text-red-500 shadow-sm"
+        (click)="handlePageChange(pageCount)">&gt;</button>
+    </div>
+  </div>
+</div>

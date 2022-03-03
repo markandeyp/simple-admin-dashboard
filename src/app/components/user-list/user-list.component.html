@@ -1,0 +1,4 @@
+<button type="button" class="text-white px-5 py-2 rounded bg-blue-500 hover:bg-blue-700 mb-3" (click)="addUser()">Add
+  User</button>
+<app-datatable [pagination]="true" [pageCount]="5" [actions]="actions" (onPageChange)="pageChange($event)"
+  (onAction)="onAction($event)" [columns]="columns" [data]="data"></app-datatable>

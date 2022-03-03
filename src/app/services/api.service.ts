@@ -1,36 +1,30 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import User from '../models/User';
-import { Observable, of } from 'rxjs';
-import USER_DATA from '../data/users.json';
+import { map, Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApiService {
-  users: User[] = USER_DATA;
+  constructor(private http: HttpClient) {}
 
-  constructor() {}
-
-  getUsers(): Observable<User[]> {
-    return of(this.users);
-  }
-
-  addUser(user: User): Observable<boolean> {
-    user.id = this.users.length + 1;
-    this.users.push(user);
-    return of(true);
-  }
-
-  updateUser(user: User): Observable<boolean> {
-    const userToUpdate = this.users.find((u) => u.id === user.id);
-    if (userToUpdate) {
-      userToUpdate.name = user.name;
-      userToUpdate.email = user.email;
-      userToUpdate.role = user.role;
-      return of(true);
-    } else {
-      return of(false);
-    }
+  getUsers(page = 1): Observable<User[]> {
+    return this.http
+      .get(`https://randomuser.me/api/?page=${page}&results=10&seed=abc`)
+      .pipe(
+        map((data: any) =>
+          data.results.map((user: any) => {
+            return {
+              id: user?.id?.value,
+              gender: user?.gender,
+              name: `${user?.name?.first} ${user?.name?.last}`,
+              email: user?.email,
+              username: user?.login?.username,
+              phone: user?.phone,
+            };
+          })
+        )
+      );
   }
 }
